@@ -1,0 +1,23 @@
+{
+  "name": "neoload-api",
+  "version": "1.0.0",
+  "description": "Nodejs API client of NeoLoad Web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NeotysLab/NeoLoadNodeJs-API.git"
+  },
+  "keywords": [
+    "Api",
+    "client"
+  ],
+  "author": "Henrik Rexed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NeotysLab/NeoLoadNodeJs-API/issues"
+  },
+  "homepage": "https://github.com/NeotysLab/NeoLoadNodeJs-API#readme"
+}

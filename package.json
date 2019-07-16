@@ -1,6 +1,6 @@
 {
   "name": "neoload-api",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "Nodejs API client of NeoLoad Web",
   "main": "index.js",
   "scripts": {

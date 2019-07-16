@@ -25,4 +25,5 @@ export interface Point {
     AVG_TTFB?: number;
     MIN_TTFB?: number;
     MAX_TTFB?: number;
+    AVG?: number;
 }

@@ -170,7 +170,7 @@ export class RuntimeService {
 
     /**
      * Uploads a NeoLoad project zip file or a standalone as code file
-     * Uploads a NeoLoad project of the account corresponding to the parameters. The maximum size file is 250 MB
+     * Uploads a NeoLoad project of the account corresponding to the parameters. The maximum size file is ${FILE_PROJECT_MAX_SIZE_IN_BYTES}
      * @param file 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.

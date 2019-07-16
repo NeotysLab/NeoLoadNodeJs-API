@@ -71,13 +71,14 @@ export class RuntimeService {
      * @param reservationSAPVUs The number of SAP Virtual Users to be reserved for the test. The value is optional when the reservation mode is enabled and ignored when \&quot;reservationId\&quot; value is defined or if the reservation mode is disabled.
      * @param controllerZoneId The controller zone Id. If empty, the default zone will be used.
      * @param lgZones The LG zones with the number of the LGs. Example: \&quot;ZoneId1:10,ZoneId2:5\&quot;. If empty, the default zone will be used with one LG.
+     * @param publishTestResult When \&quot;true\&quot; and the project is an collaborative project (other than git) then the test result is published onto the server. If empty, the default value is \&quot;false\&quot;.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getTestsRun(name: string, projectId: string, scenarioName: string, description?: string, asCode?: string, reservationId?: string, reservationDuration?: number, reservationWebVUs?: number, reservationSAPVUs?: number, controllerZoneId?: string, lgZones?: string, observe?: 'body', reportProgress?: boolean): Observable<RunTestDefinition>;
-    public getTestsRun(name: string, projectId: string, scenarioName: string, description?: string, asCode?: string, reservationId?: string, reservationDuration?: number, reservationWebVUs?: number, reservationSAPVUs?: number, controllerZoneId?: string, lgZones?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<RunTestDefinition>>;
-    public getTestsRun(name: string, projectId: string, scenarioName: string, description?: string, asCode?: string, reservationId?: string, reservationDuration?: number, reservationWebVUs?: number, reservationSAPVUs?: number, controllerZoneId?: string, lgZones?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<RunTestDefinition>>;
-    public getTestsRun(name: string, projectId: string, scenarioName: string, description?: string, asCode?: string, reservationId?: string, reservationDuration?: number, reservationWebVUs?: number, reservationSAPVUs?: number, controllerZoneId?: string, lgZones?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getTestsRun(name: string, projectId: string, scenarioName: string, description?: string, asCode?: string, reservationId?: string, reservationDuration?: number, reservationWebVUs?: number, reservationSAPVUs?: number, controllerZoneId?: string, lgZones?: string, publishTestResult?: boolean, observe?: 'body', reportProgress?: boolean): Observable<RunTestDefinition>;
+    public getTestsRun(name: string, projectId: string, scenarioName: string, description?: string, asCode?: string, reservationId?: string, reservationDuration?: number, reservationWebVUs?: number, reservationSAPVUs?: number, controllerZoneId?: string, lgZones?: string, publishTestResult?: boolean, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<RunTestDefinition>>;
+    public getTestsRun(name: string, projectId: string, scenarioName: string, description?: string, asCode?: string, reservationId?: string, reservationDuration?: number, reservationWebVUs?: number, reservationSAPVUs?: number, controllerZoneId?: string, lgZones?: string, publishTestResult?: boolean, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<RunTestDefinition>>;
+    public getTestsRun(name: string, projectId: string, scenarioName: string, description?: string, asCode?: string, reservationId?: string, reservationDuration?: number, reservationWebVUs?: number, reservationSAPVUs?: number, controllerZoneId?: string, lgZones?: string, publishTestResult?: boolean, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (name === null || name === undefined) {
             throw new Error('Required parameter name was null or undefined when calling getTestsRun.');
@@ -90,6 +91,7 @@ export class RuntimeService {
         if (scenarioName === null || scenarioName === undefined) {
             throw new Error('Required parameter scenarioName was null or undefined when calling getTestsRun.');
         }
+
 
 
 
@@ -130,6 +132,9 @@ export class RuntimeService {
         if (lgZones !== undefined && lgZones !== null) {
             queryParameters = queryParameters.set('lgZones', <any>lgZones);
         }
+        if (publishTestResult !== undefined && publishTestResult !== null) {
+            queryParameters = queryParameters.set('publishTestResult', <any>publishTestResult);
+        }
 
         let headers = this.defaultHeaders;
 
@@ -165,7 +170,7 @@ export class RuntimeService {
 
     /**
      * Uploads a NeoLoad project zip file or a standalone as code file
-     * Uploads a NeoLoad project of the account corresponding to the parameters. The maximum size file is 100 MB
+     * Uploads a NeoLoad project of the account corresponding to the parameters. The maximum size file is 250 MB
      * @param file 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.

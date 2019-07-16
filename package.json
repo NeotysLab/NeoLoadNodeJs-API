@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/NeotysLab/NeoLoadNodeJs-API/issues"
   },
-  "homepage": "https://github.com/NeotysLab/NeoLoadNodeJs-API#readme"
+  "homepage": "https://github.com/NeotysLab/NeoLoadNodeJs-API#readme",
+  "dependencies": {
+    "@angular/common": "latest",
+    "@angular/core": "latest"
+  }
 }

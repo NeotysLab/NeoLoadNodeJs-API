@@ -24,6 +24,7 @@ import { ArrayOfSLAPerIntervalDefinition } from '../model/arrayOfSLAPerIntervalD
 import { ArrayOfSLAPerTestDefinition } from '../model/arrayOfSLAPerTestDefinition';
 import { ArrayOfTestDefinition } from '../model/arrayOfTestDefinition';
 import { CounterDefinition } from '../model/counterDefinition';
+import { CounterDefinitionArray } from '../model/counterDefinitionArray';
 import { CounterValues } from '../model/counterValues';
 import { ElementDefinition } from '../model/elementDefinition';
 import { ElementValues } from '../model/elementValues';
@@ -443,7 +444,7 @@ export class ResultsService {
      * List the events of the specified test according to the method parameters.
      * @param testId Unique identifier representing a specific test.
      * @param types The types of the events you expect to get. It will return all the types if the field is left empty. (Ctrl+click to select multiple values) 
-     * @param limit The maximum number of elements returned by this call.
+     * @param limit The maximum number of elements returned by this call. The maximum must be less than or equal to 200.
      * @param offset The offset of the first element to return. Starting at this offset, the query will return a maximum of &#x27;limit&#x27; elements.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -617,9 +618,9 @@ export class ResultsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getTestMonitors(testId: string, observe?: 'body', reportProgress?: boolean): Observable<CounterDefinition>;
-    public getTestMonitors(testId: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<CounterDefinition>>;
-    public getTestMonitors(testId: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<CounterDefinition>>;
+    public getTestMonitors(testId: string, observe?: 'body', reportProgress?: boolean): Observable<CounterDefinitionArray>;
+    public getTestMonitors(testId: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<CounterDefinitionArray>>;
+    public getTestMonitors(testId: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<CounterDefinitionArray>>;
     public getTestMonitors(testId: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (testId === null || testId === undefined) {
@@ -646,7 +647,7 @@ export class ResultsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<CounterDefinition>(`${this.basePath}/tests/${encodeURIComponent(String(testId))}/monitors`,
+        return this.httpClient.get<CounterDefinitionArray>(`${this.basePath}/tests/${encodeURIComponent(String(testId))}/monitors`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -1034,7 +1035,7 @@ export class ResultsService {
      * @param status Returns only the test with the specified status.
      * @param project Project name. Returns only the tests of the specified project.
      * @param author The author of the test. Returns only the tests launched by the specified author.
-     * @param limit The maximum number of elements returned by this call.
+     * @param limit The maximum number of elements returned by this call. The maximum must be less than or equal to 200.
      * @param offset The offset of the first element to return. Starting at this offset, the query will return a maximum of &#x27;limit&#x27; elements.
      * @param fields Comma-separated list of fields to include in the json test definition.
      * @param pretty If true the Json returned is human readable.

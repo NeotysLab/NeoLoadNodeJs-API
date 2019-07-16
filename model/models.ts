@@ -7,6 +7,7 @@ export * from './arrayOfTestDefinition';
 export * from './asCodeFile';
 export * from './body';
 export * from './counterDefinition';
+export * from './counterDefinitionArray';
 export * from './counterValues';
 export * from './customMonitor';
 export * from './customMonitorValues';

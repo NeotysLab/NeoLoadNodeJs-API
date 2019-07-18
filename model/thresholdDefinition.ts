@@ -25,6 +25,6 @@ export namespace ThresholdDefinition {
     export const OperatorEnum = {
         GreaterThanOrEqualTo: '>=' as OperatorEnum,
         LessThanOrEqualTo: '<=' as OperatorEnum,
-        : '==' as OperatorEnum
+        Equalto: '==' as OperatorEnum
     };
 }
